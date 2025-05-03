@@ -4,6 +4,7 @@ import { Facebook, Linkedin, Mail } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import Navbar from "@/components/navbar"
 import Footer from "@/components/footer"
+import ChatWidget from "@/components/chat-widget"
 
 export default function AboutPage() {
   return (
@@ -106,6 +107,7 @@ export default function AboutPage() {
       </section>
 
       <Footer />
+      <ChatWidget />
     </main>
   )
 }

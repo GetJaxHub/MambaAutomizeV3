@@ -6,6 +6,7 @@ import Testimonials from "@/components/testimonials"
 import Contact from "@/components/contact"
 import Footer from "@/components/footer"
 import Navbar from "@/components/navbar"
+import ChatWidget from "@/components/chat-widget"
 
 export default function Home() {
   return (
@@ -18,6 +19,7 @@ export default function Home() {
       <Testimonials />
       <Contact />
       <Footer />
+      <ChatWidget />
     </main>
   )
 }

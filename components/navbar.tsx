@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react"
 import Link from "next/link"
+import Image from "next/image"
 import { usePathname } from "next/navigation"
 import { Menu, X } from "lucide-react"
 import { Button } from "@/components/ui/button"
@@ -57,6 +58,7 @@ export default function Navbar() {
       <div className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
           <Link href="/" className="flex items-center space-x-2">
+            <Image src="/images/logo.png" alt="Mamba Automize Logo" width={40} height={40} className="w-10 h-10" />
             <span className="text-xl md:text-2xl font-bold text-white">Mamba Automize</span>
           </Link>
 

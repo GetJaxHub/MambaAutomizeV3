@@ -4,6 +4,7 @@ import { Facebook, Linkedin, Mail } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import Navbar from "@/components/navbar"
 import Footer from "@/components/footer"
+import ChatWidget from "@/components/chat-widget"
 
 export default function FounderPage() {
   return (
@@ -106,6 +107,7 @@ export default function FounderPage() {
       </section>
 
       <Footer />
+      <ChatWidget />
     </main>
   )
 }
