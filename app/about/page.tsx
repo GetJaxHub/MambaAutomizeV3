@@ -8,7 +8,7 @@ import ChatWidget from "@/components/chat-widget"
 
 export default function AboutPage() {
   return (
-    <main className="min-h-screen">
+    <div className="min-h-screen">
       <Navbar />
 
       <section className="pt-24 pb-16 md:pt-32 md:pb-20 bg-gradient-to-br from-slate-900 to-slate-800">
@@ -108,6 +108,6 @@ export default function AboutPage() {
 
       <FooterWithPolicies />
       <ChatWidget />
-    </main>
+    </div>
   )
 }
