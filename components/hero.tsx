@@ -1,11 +1,14 @@
 "use client"
 
+import type React from "react"
+
 import { useEffect, useRef } from "react"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { motion } from "framer-motion"
 import { ArrowRight } from "lucide-react"
 import { useMediaQuery } from "@/hooks/use-media-query"
+import { scrollToSection } from "@/utils/scroll-utils"
 
 export default function Hero() {
   const heroRef = useRef<HTMLDivElement>(null)
@@ -37,6 +40,11 @@ export default function Hero() {
       }
     }
   }, [isMobile])
+
+  const handleGetStarted = (e: React.MouseEvent) => {
+    e.preventDefault()
+    scrollToSection("contact")
+  }
 
   return (
     <section
@@ -89,11 +97,16 @@ export default function Hero() {
               unstoppable growth.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
-              <Button size="lg" className="bg-cyan-500 hover:bg-cyan-600 text-white group">
+              <Button size="lg" className="bg-cyan-500 hover:bg-cyan-600 text-white group" onClick={handleGetStarted}>
                 Automate Now
                 <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
               </Button>
-              <Button size="lg" variant="outline" className="border-cyan-500 text-cyan-400 hover:bg-cyan-950">
+              <Button
+                size="lg"
+                variant="outline"
+                className="border-cyan-500 text-cyan-400 hover:bg-cyan-950"
+                onClick={() => scrollToSection("services")}
+              >
                 Explore Solutions
               </Button>
             </div>
@@ -101,15 +114,15 @@ export default function Hero() {
             {/* Stats - responsive grid */}
             <div className="mt-8 md:mt-12 grid grid-cols-3 gap-2 md:gap-4">
               <div className="text-center">
-                <div className="text-xl md:text-3xl font-bold text-white">500+</div>
+                <div className="text-xl md:text-3xl font-bold text-white">21</div>
                 <div className="text-xs md:text-sm text-gray-400">Projects Completed</div>
               </div>
               <div className="text-center">
-                <div className="text-xl md:text-3xl font-bold text-white">98%</div>
+                <div className="text-xl md:text-3xl font-bold text-white">95%</div>
                 <div className="text-xs md:text-sm text-gray-400">Client Satisfaction</div>
               </div>
               <div className="text-center">
-                <div className="text-xl md:text-3xl font-bold text-white">45%</div>
+                <div className="text-xl md:text-3xl font-bold text-white">68%</div>
                 <div className="text-xs md:text-sm text-gray-400">Cost Reduction</div>
               </div>
             </div>

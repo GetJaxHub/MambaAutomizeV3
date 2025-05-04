@@ -1,17 +1,21 @@
 "use client"
 
+import type React from "react"
+
 import { useState, useEffect } from "react"
 import Link from "next/link"
 import Image from "next/image"
-import { usePathname } from "next/navigation"
+import { usePathname, useRouter } from "next/navigation"
 import { Menu, X } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
+import { scrollToSection } from "@/utils/scroll-utils"
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const pathname = usePathname()
+  const router = useRouter()
 
   useEffect(() => {
     const handleScroll = () => {
@@ -31,11 +35,11 @@ export default function Navbar() {
   }
 
   const navLinks = [
-    { name: "Home", href: "/" },
-    { name: "About", href: "/about" },
-    { name: "Services", href: "/#services" },
-    { name: "Careers", href: "/#careers" },
-    { name: "Contact Us", href: "/#contact" },
+    { name: "Home", href: "/", section: "home" },
+    { name: "About", href: "/#about", section: "about" },
+    { name: "Services", href: "/#services", section: "services" },
+    { name: "Careers", href: "/careers", section: null },
+    { name: "Contact Us", href: "/#contact", section: "contact" },
   ]
 
   const isActive = (href: string) => {
@@ -46,6 +50,26 @@ export default function Navbar() {
       return pathname === "/"
     }
     return pathname === href
+  }
+
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string, section?: string | null) => {
+    e.preventDefault()
+
+    // If we're already on the homepage and there's a section, scroll to it
+    if (pathname === "/" && section && href.startsWith("/#")) {
+      scrollToSection(section)
+    } else if (href === "/" && pathname === "/") {
+      // If we're on homepage and clicking home, scroll to top
+      window.scrollTo({ top: 0, behavior: "smooth" })
+    } else {
+      // Otherwise navigate to the new page
+      router.push(href)
+    }
+
+    // Close mobile menu if open
+    if (isOpen) {
+      setIsOpen(false)
+    }
   }
 
   return (
@@ -65,22 +89,23 @@ export default function Navbar() {
           {/* Desktop Navigation */}
           <nav className="hidden md:flex space-x-6 lg:space-x-8">
             {navLinks.map((link) => (
-              <Link
+              <a
                 key={link.name}
                 href={link.href}
+                onClick={(e) => handleNavClick(e, link.href, link.section)}
                 className={cn(
-                  "text-white transition-colors font-medium",
+                  "text-white transition-colors font-medium cursor-pointer",
                   isActive(link.href) ? "text-cyan-400" : "hover:text-cyan-400",
                 )}
               >
                 {link.name}
-              </Link>
+              </a>
             ))}
           </nav>
 
-          <Link href="/#contact">
-            <Button className="hidden md:flex bg-cyan-500 hover:bg-cyan-600 text-white">Get Started</Button>
-          </Link>
+          <a href="/#contact" onClick={(e) => handleNavClick(e, "/#contact", "contact")} className="hidden md:block">
+            <Button className="bg-cyan-500 hover:bg-cyan-600 text-white">Get Started</Button>
+          </a>
 
           {/* Mobile Menu Button */}
           <button className="md:hidden text-white" onClick={toggleMenu} aria-label="Toggle menu">
@@ -98,21 +123,21 @@ export default function Navbar() {
       >
         <nav className="flex flex-col space-y-6">
           {navLinks.map((link) => (
-            <Link
+            <a
               key={link.name}
               href={link.href}
+              onClick={(e) => handleNavClick(e, link.href, link.section)}
               className={cn(
                 "text-white transition-colors text-xl font-medium",
                 isActive(link.href) ? "text-cyan-400" : "hover:text-cyan-400",
               )}
-              onClick={() => setIsOpen(false)}
             >
               {link.name}
-            </Link>
+            </a>
           ))}
-          <Link href="/#contact" onClick={() => setIsOpen(false)}>
+          <a href="/#contact" onClick={(e) => handleNavClick(e, "/#contact", "contact")}>
             <Button className="bg-cyan-500 hover:bg-cyan-600 text-white w-full mt-4">Get Started</Button>
-          </Link>
+          </a>
         </nav>
       </div>
     </header>

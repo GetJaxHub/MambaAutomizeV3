@@ -4,7 +4,7 @@ import About from "@/components/about"
 import Features from "@/components/features"
 import Testimonials from "@/components/testimonials"
 import Contact from "@/components/contact"
-import Footer from "@/components/footer"
+import FooterWithPolicies from "@/components/footer-with-policies"
 import Navbar from "@/components/navbar"
 import ChatWidget from "@/components/chat-widget"
 
@@ -18,7 +18,7 @@ export default function Home() {
       <Services />
       <Testimonials />
       <Contact />
-      <Footer />
+      <FooterWithPolicies />
       <ChatWidget />
     </main>
   )

@@ -1,11 +1,13 @@
 "use client"
 
+import type React from "react"
+
 import { useRef } from "react"
 import { motion, useInView } from "framer-motion"
 import { Zap, BarChart2, Clock, Shield, Cpu, TrendingUp, CheckCircle } from "lucide-react"
 import { useMediaQuery } from "@/hooks/use-media-query"
 import type { JSX } from "react"
-import Link from "next/link"
+import { scrollToSection } from "@/utils/scroll-utils"
 
 interface Feature {
   icon: JSX.Element
@@ -102,6 +104,11 @@ export default function Features() {
   const itemVariants = {
     hidden: { opacity: 0, y: 20 },
     visible: { opacity: 1, y: 0, transition: { duration: isMobile ? 0.4 : 0.6 } },
+  }
+
+  const handleGetStarted = (e: React.MouseEvent) => {
+    e.preventDefault()
+    scrollToSection("contact")
   }
 
   return (
@@ -222,15 +229,14 @@ export default function Features() {
               <p className="text-gray-300 mb-4 md:mb-6 text-sm md:text-base">
                 Join hundreds of businesses that have already revolutionized their operations with Mamba Automize.
               </p>
-              <Link href="/#contact">
-                <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="bg-gradient-to-r from-cyan-500 to-blue-500 text-white font-medium py-2 md:py-3 px-4 md:px-6 rounded-lg text-sm md:text-base"
-                >
-                  Get Started Today
-                </motion.button>
-              </Link>
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                onClick={handleGetStarted}
+                className="bg-gradient-to-r from-cyan-500 to-blue-500 text-white font-medium py-2 md:py-3 px-4 md:px-6 rounded-lg text-sm md:text-base"
+              >
+                Get Started Today
+              </motion.button>
             </motion.div>
           </motion.div>
         </div>

@@ -3,7 +3,7 @@ import Link from "next/link"
 import { Facebook, Linkedin, Mail } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import Navbar from "@/components/navbar"
-import Footer from "@/components/footer"
+import FooterWithPolicies from "@/components/footer-with-policies"
 import ChatWidget from "@/components/chat-widget"
 
 export default function AboutPage() {
@@ -106,7 +106,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <Footer />
+      <FooterWithPolicies />
       <ChatWidget />
     </main>
   )
