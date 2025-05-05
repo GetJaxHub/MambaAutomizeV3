@@ -9,6 +9,7 @@ import { motion } from "framer-motion"
 import { ArrowRight } from "lucide-react"
 import { useMediaQuery } from "@/hooks/use-media-query"
 import { scrollToSection } from "@/utils/scroll-utils"
+import InteractiveAvatar from "@/components/interactive-avatar"
 
 export default function Hero() {
   const heroRef = useRef<HTMLDivElement>(null)
@@ -50,10 +51,7 @@ export default function Hero() {
     <section
       id="home"
       ref={heroRef}
-      className="relative min-h-screen flex items-center pt-20 overflow-hidden"
-      style={{
-        background: "linear-gradient(135deg, #0f172a 0%, #0c4a6e 100%)",
-      }}
+      className="relative min-h-screen flex items-center pt-20 overflow-hidden bg-slate-900"
     >
       {/* Animated shapes - reduced complexity on mobile */}
       <div className="absolute inset-0 overflow-hidden">
@@ -66,15 +64,17 @@ export default function Hero() {
         )}
       </div>
 
-      {/* Grid pattern overlay - simplified on mobile */}
-      <div
-        className="absolute inset-0 opacity-10"
-        style={{
-          backgroundImage:
-            "linear-gradient(#0ea5e9 1px, transparent 1px), linear-gradient(to right, #0ea5e9 1px, transparent 1px)",
-          backgroundSize: isMobile ? "20px 20px" : "40px 40px",
-        }}
-      ></div>
+      {/* Background image */}
+      <div className="absolute inset-0 opacity-100">
+        <Image
+          src="/images/Site_CEO.png"
+          alt="CEO Background"
+          fill
+          priority
+          className="object-cover"
+          style={{ zIndex: -1 }}
+        />
+      </div>
 
       <div className="container mx-auto px-4 py-12 md:py-20 relative z-10">
         <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
@@ -132,7 +132,7 @@ export default function Hero() {
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="relative h-[300px] md:h-[400px] lg:h-[500px] flex justify-center"
+            className="relative h-[300px] md:h-[400px] lg:h-[500px] flex justify-center items-center"
           >
             {/* Decorative elements - simplified on mobile */}
             <div className="absolute inset-0 flex items-center justify-center">
@@ -145,15 +145,14 @@ export default function Hero() {
               )}
             </div>
 
-            {/* Person image - responsive sizing */}
-            <div className="relative z-10">
-              <Image
-                src="https://sjc.microlink.io/6o3ds-S1uhTZqTbUpqruRyRCLJVUbutIMokUGMGsArZk0kZtRQqb3ExZ1mrsvGQjedhF23Yhm8XkBds3jDUnoA.jpeg"
-                alt="Business professional"
-                width={400}
-                height={500}
-                className="object-contain w-[250px] md:w-[300px] lg:w-[400px]"
-                priority
+            {/* Interactive avatar - positioned higher */}
+            <div className="relative z-10 -mt-10">
+              <InteractiveAvatar
+                imageSrc="/images/ceo-portrait.jpeg"
+                alt="Jakyz Mamba - CEO"
+                width={350}
+                height={450}
+                className="w-[220px] md:w-[280px] lg:w-[350px]"
               />
             </div>
           </motion.div>
