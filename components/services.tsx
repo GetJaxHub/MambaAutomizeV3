@@ -8,6 +8,7 @@ import { Cpu, BarChart3, Workflow, Database, Bot, LineChart, ChevronRight } from
 import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
 import { useMediaQuery } from "@/hooks/use-media-query"
+import { scrollToSection } from "@/utils/scroll-utils"
 
 interface Service {
   id: number
@@ -184,7 +185,12 @@ export default function Services() {
                   ))}
                 </ul>
 
-                <Button className="bg-cyan-500 hover:bg-cyan-600 text-white text-sm md:text-base">Learn More</Button>
+                <Button
+                  onClick={() => scrollToSection("contact")}
+                  className="bg-cyan-500 hover:bg-cyan-600 text-white text-sm md:text-base"
+                >
+                  Learn More
+                </Button>
               </div>
             </div>
           </motion.div>
