@@ -9,7 +9,7 @@ import { motion } from "framer-motion"
 import { ArrowRight } from "lucide-react"
 import { useMediaQuery } from "@/hooks/use-media-query"
 import { scrollToSection } from "@/utils/scroll-utils"
-import InteractiveAvatar from "@/components/interactive-avatar"
+import InteractiveAIBot from "@/components/interactive-ai-bot"
 
 export default function Hero() {
   const heroRef = useRef<HTMLDivElement>(null)
@@ -134,26 +134,9 @@ export default function Hero() {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="relative h-[300px] md:h-[400px] lg:h-[500px] flex justify-center items-center"
           >
-            {/* Decorative elements - simplified on mobile */}
-            <div className="absolute inset-0 flex items-center justify-center">
-              <div className="w-[220px] h-[220px] md:w-[300px] md:h-[300px] lg:w-[400px] lg:h-[400px] rounded-full bg-gradient-to-r from-cyan-500/20 to-cyan-700/20 animate-pulse"></div>
-              {!isMobile && (
-                <>
-                  <div className="absolute w-[200px] h-[200px] md:w-[280px] md:h-[280px] lg:w-[380px] lg:h-[380px] rounded-full border-2 border-cyan-500/30"></div>
-                  <div className="absolute w-[240px] h-[240px] md:w-[320px] md:h-[320px] lg:w-[420px] lg:h-[420px] rounded-full border border-cyan-500/20"></div>
-                </>
-              )}
-            </div>
-
-            {/* Interactive avatar - positioned higher */}
-            <div className="relative z-10 -mt-10">
-              <InteractiveAvatar
-                imageSrc="/images/ceo-portrait.jpeg"
-                alt="Jakyz Mamba - CEO"
-                width={350}
-                height={450}
-                className="w-[220px] md:w-[280px] lg:w-[350px]"
-              />
+            {/* Interactive AI bot element */}
+            <div className="relative z-10 w-full h-full flex items-center justify-center">
+              <InteractiveAIBot className="w-[250px] h-[350px] md:w-[300px] md:h-[400px] cursor-pointer" />
             </div>
           </motion.div>
         </div>
