@@ -40,11 +40,17 @@ export default function About() {
               and process optimization. We believe that every business deserves access to cutting-edge technology that
               can streamline operations, reduce costs, and drive growth.
             </p>
+
+            <div className="h-1 w-20 bg-cyan-500 my-8"></div>
+
+            <h3 className="text-2xl font-bold text-white mb-6">Who We Are</h3>
+
             <p className="text-gray-300 mb-6">
-              Founded by a team of automation experts with decades of combined experience, we understand the challenges
+              We are a team of automation experts with decades of combined experience. We understand the challenges
               businesses face in today's fast-paced digital landscape. Our solutions are designed to address these
               challenges head-on, providing customized automation strategies that deliver real results.
             </p>
+
             <p className="text-gray-300">
               Whether you're a small startup looking to scale efficiently or an established enterprise seeking to
               optimize existing processes, Mamba Automize has the expertise and technology to help you succeed.
